@@ -27,15 +27,29 @@ export class LearningObjectProvider {
         return this.storage.getLearningObjects();
     }
 
+    getName(){
+        return this.learningObject.name;
+    }
+
+    getLevels(){
+        return this.learningObject.name;
+    }
+    
+    getPublished(){
+        return this.learningObject.name;
+    }
+
     getLearningObject(){
         return this.learningObject;
     }
 
     updateLearningObject(name:string, levels:string[], published:boolean){
+
+        this.learningObject.name = name;
+        this.learningObject.levels = levels;
+        this.learningObject.published = published;
+        
         if(this.learningObject.$key){
-            this.learningObject.name = name;
-            this.learningObject.levels = levels;
-            this.learningObject.published = published;
             this.storage.update(this.learningObject);
         }else{
             this.storage.save(this.learningObject);

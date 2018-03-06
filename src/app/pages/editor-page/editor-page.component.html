@@ -1,3 +1,32 @@
-<p>
-  editor-page works!
-</p>
+<form [formGroup]="form">
+  <label>Name</label>
+  <input type="text" [formControl]="form.controls['name']" placeholder="{{provider.getName()}}">
+
+  <div>
+    <label>Class Levels</label>
+    <div>
+      <label>K-12</label>
+      <input type="checkbox" [formControl]="form.controls['k12']" value="K-12" ng-checked="">
+
+      <label>Undergraduate</label>
+      <input type="checkbox" [formControl]="form.controls['undergrad']" value="Undergrad">
+
+      <label>Graduate</label>
+      <input type="checkbox" [formControl]="form.controls['grad']" value="Graduate">
+    </div>
+  </div>
+  
+  <div>
+    <label>Publish?</label>
+    <div>
+      <label>True</label>
+      <input type="radio" [formControl]="form.controls['publish']" value="True">
+
+      <label>False</label>
+      <input type="radio" [formControl]="form.controls['publish']" value="False" checked>
+    </div>
+  </div>
+
+</form>
+
+<input type="button" (click)="update()" value="Save">

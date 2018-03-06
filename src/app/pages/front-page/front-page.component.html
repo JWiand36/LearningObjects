@@ -1,18 +1,19 @@
+    <button (click)="displayPublished()">Display</button>
+    <button (click)="sort()">Sort</button>
+    <button (click)="createLearningObject()">New Component</button>
 
     <ul>
-      <div *ngFor="let item of items | async">
-        <li class="text" *ngIf = "display || item.published">
-          <button (click) = "remove(item)">X</button>
-          <button (click) = "update(item)">Change</button>
-          {{item.name}}
-          <ul>
-            <li *ngFor= "let level of item.levels">
-              {{level}}
-            </li>
-          </ul>
-        </li>
-      </div>
-
-    </ul>
-    <button (click)="displayPublished()">Display</button>
-    <button (click)="save()">Save</button>
+        <div *ngFor="let item of items | async">
+          <li class="text" *ngIf = "display || item.published">
+            <button (click) = "remove(item)">X</button>
+            <button (click) = "editLearningObject(item)">Change</button>
+            {{item.name}}
+            <ul>
+              <li *ngFor= "let level of item.levels">
+                {{level}}
+              </li>
+            </ul>
+          </li>
+        </div>
+  
+      </ul>
