@@ -21,6 +21,7 @@ export class FrontPageComponent implements OnInit {
     this.items = this.provider.getLearningData();
   }
 
+  //The method effects if a learning object is to be displayed
   displayPublished(){
     if(this.display){
       this.display = false;
@@ -33,18 +34,24 @@ export class FrontPageComponent implements OnInit {
     this.provider.remove(learning);
   }
 
+  //Allows objects to be selected and edited in the Editor Component
   editLearningObject(learning: LearningObject){
     this.provider.setLearningObject(learning);
     this.router.navigate(['editor']);
   }
 
+  //Allows objects to be create and edited in the Editor Component
   createLearningObject(){
     this.provider.setBlankLearningObjects();
     this.router.navigate(['editor']);
   }
 
   sort(){
+
+
     this.items = this.items.map(items =>{
+      
+      //sorts the objects alphabetically
       items.sort((item1,item2) =>{
         if(item1.name < item2.name)
           return -1;

@@ -13,9 +13,10 @@ export class EditorPageComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private provider: LearningObjectProvider, private router: Router) { }
+  constructor(public provider: LearningObjectProvider, private router: Router) { }
 
   ngOnInit() {
+    //TODO: reduce the amount of formControls needed for the checkboxes
     this.form = new FormGroup({
       name: new FormControl('', Validators.maxLength(50)),
       k12: new FormControl(''),
@@ -32,12 +33,16 @@ export class EditorPageComponent implements OnInit {
     let level: string[] = [];
     let index = 0;
 
+    //Converts the string vales from the Radiobuttons into boolean values
     if(published === 'True'){
       published = true;
     }else{
       published = false;
     }
 
+
+    //If a check box is checked, the correct value will be 
+    //entered in the level array.
     if(this.form.controls['k12'].value){
       level[index] = 'K-12';
       index++;
@@ -48,6 +53,11 @@ export class EditorPageComponent implements OnInit {
       level[index] = 'Graduate';
     }
 
+    /*
+      If the name is left blank in the textbox then the provider prevents
+      the name from being erased. TODO: Refactor this without needing the 
+      provider.
+    */
     if(name === ''){
       name = this.provider.getName();
     }

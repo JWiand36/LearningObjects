@@ -45,10 +45,13 @@ export class LearningObjectProvider {
 
     updateLearningObject(name:string, levels:string[], published:boolean){
 
+        //Updates the learning object's values
         this.learningObject.name = name;
         this.learningObject.levels = levels;
         this.learningObject.published = published;
         
+        //If a key is present the learning object is updated, otherwise the 
+        //object is saved
         if(this.learningObject.$key){
             this.storage.update(this.learningObject);
         }else{
